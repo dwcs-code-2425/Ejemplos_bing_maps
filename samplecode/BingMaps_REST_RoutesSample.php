@@ -37,10 +37,14 @@
         // Construct final URL for call to Routes API  
         $routesURL = $baseURL . "/" . $travelMode . "?wp.0=" . $wayPoint0 . "&wp.1=" . $wayPoint1 . "&optimize=" . $optimize . "&routePathOutput=" . $routePathOutput . "&distanceUnit=" . $distanceUnit . "&output=xml&key=" . $key;
 
-       
+
         // Get output from API and convert to XML element using php_xml  
-        $output = file_get_contents($routesURL);
-        $response = new SimpleXMLElement($output);
+        // $output = file_get_contents($routesURL);
+        // $response = new SimpleXMLElement($output);
+
+        //O también 
+        $response = simplexml_load_file($routesURL);
+
 
         // Extract and print number of routes from response  
         $numRoutes = $response->ResourceSets->ResourceSet->EstimatedTotal;

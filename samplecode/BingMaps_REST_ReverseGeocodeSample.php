@@ -23,8 +23,13 @@ if(isset($_POST['key']) && isset($_POST['latitude']) && isset($_POST['longitude'
   $baseURL = "http://dev.virtualearth.net/REST/v1/Locations";  
   $revGeocodeURL = $baseURL."/".$latitude.",".$longitude."?output=xml&key=".$key;  
   
-   $rgOutput = file_get_contents($revGeocodeURL);  
-  $rgResponse = new SimpleXMLElement($rgOutput);  
+  //  $rgOutput = file_get_contents($revGeocodeURL);  
+  // $rgResponse = new SimpleXMLElement($rgOutput);  
+
+   
+
+   //O también 
+   $rgResponse = simplexml_load_file($revGeocodeURL);
   
   $address= $rgResponse->ResourceSets->ResourceSet->Resources->Location->Address->FormattedAddress;  
   echo $address;  

@@ -43,8 +43,11 @@ if(isset($_POST['key']) &&
   
    // Get output from URL and convert to XML element using php_xml  
 
-  $output = file_get_contents($findURL);  
-   $response = new SimpleXMLElement($output);  
+  // $output = file_get_contents($findURL);  
+  //  $response = new SimpleXMLElement($output);  
+
+   //O también 
+   $response = simplexml_load_file($findURL);
   
   // Extract and pring latitude and longitude coordinates from results  
   $latitude = $response->ResourceSets->ResourceSet->Resources->Location->Point->Latitude;  
